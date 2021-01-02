@@ -1,0 +1,119 @@
+﻿@model List<WorkListAllDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Member/Views/Shared/_MemberLayout.cshtml";
+    int i = 0;
+}
+@foreach (var work in Model)
+{
+    i++;
+    <div class="card my-2">
+        <h5 class="card-header">@work.Name</h5>
+        <div class="card-body">
+            <h5 class="card-title"><span class="text-danger">Öncelik Durumu: </span> @work.Priority.Description</h5>
+            <p class="card-text">@work.Description</p>
+
+
+
+            <p class="text-right">
+                @if (work.Actions.Count > 0)
+                {
+                    <a class="btn btn-dark btn-sm" data-toggle="collapse" href="#collapseExample-@i" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        Aksiyonlar<i class="far fa-arrow-alt-circle-down ml-2"></i>
+                        <span class="badge badge-info">@work.Actions.Count</span>
+                    </a>
+                }
+                else
+                {
+                    <span class="lead font-italic p-2 d-block mb-1">
+                        Hiç akisyon girilmemiş, görevinizdeki ilerlemenizden bahsedin.
+                    </span>
+                    <a asp-action="AddAction" asp-route-id="@work.Id" class="btn btn-dark btn-sm">
+                        <i class="far fa-edit mr-2"></i>  Aksiyon Gir
+                    </a>
+                }
+                <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#confirmModal" data-id="@work.Id">
+                    <i class="fas fa-check mr-2"></i>Tamamla
+                </a>
+
+            </p>
+
+            <div class="collapse" id="collapseExample-@i">
+                <a asp-action="AddAction" asp-route-id="@work.Id" class="btn btn-dark btn-sm text-left">
+                    <i class="far fa-edit mr-2"></i>  Aksiyon Gir
+                </a>
+                <table class="table table-hover table-bordered table-sm">
+                    <tr>
+                        <th>Tanım</th>
+                        <th>Detay</th>
+                        <th>Harcanan Süre (Saat)</th>
+                        <th>Oluşturulma Zamanı</th>
+                        <th>İşlem</th>
+                    </tr>
+                    @foreach (var action in work.Actions)
+                    {
+                <tr>
+                    <td>@action.Description</td>
+                    <td>@action.Detail</td>
+                    <td>@action.TimeSpent</td>
+                    <td>@action.CreateDate.ToString("D")</td>
+                    <td>
+                        <a asp-action="UpdateAction" asp-route-id="@action.Id" class="btn btn-warning btn-sm"><i class="far fa-edit mr-2"></i>Düzenle</a>
+                    </td>
+
+                </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+}
+
+<!-- Modal -->
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center lead">
+                Bu işlemi gerçekleştirmek istediğinizden emin misiniz.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-ban mr-2"></i>İptal</button>
+                <button id="btnSave" type="button" class="btn btn-primary"><i class="fas fa-check mr-2"></i>Evet</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section JavaScript{ 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#confirmModal").on("show.bs.modal", function (event) {
+            let triggerElement = $(event.relatedTarget);
+            let data = triggerElement.data("id");
+
+            $("#btnSave").click(function () {
+                $.ajax({
+                    type: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    url: "./WorkOrder/CompleteWork",
+                    data: { workId : data },
+                    success: function () {
+                        window.location.reload();
+                    },
+                    error: function (error) {
+                        alert(error.responseText);
+                    }
+                })
+            });
+        });
+    });
+</script>
+}

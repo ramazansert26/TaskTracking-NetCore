@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30002.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ramazan.ToDo.DataAccess", "Ramazan.ToDo.DataAccess\Ramazan.ToDo.DataAccess.csproj", "{2AC8AC2C-54E8-469D-9D7E-849617621168}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ramazan.ToDo.Entittes", "Ramazan.ToDo.Entittes\Ramazan.ToDo.Entittes.csproj", "{06FDE870-AD56-489E-9EDE-4712BBB76180}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ramazan.ToDo.Web", "Ramazan.ToDo.Web\Ramazan.ToDo.Web.csproj", "{49EF9ED4-90B3-4037-9B71-02ED3F3645E5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ramazan.ToDo.Business", "Ramazan.ToDo.Business\Ramazan.ToDo.Business.csproj", "{4DA0090D-F09D-4A46-99D0-A6BF59EDD560}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ramazan.ToDo.DTO", "Ramazan.ToDo.DTO\Ramazan.ToDo.DTO.csproj", "{354838AE-3101-4A7B-8AB6-25FA92D8994A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2AC8AC2C-54E8-469D-9D7E-849617621168}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AC8AC2C-54E8-469D-9D7E-849617621168}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AC8AC2C-54E8-469D-9D7E-849617621168}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AC8AC2C-54E8-469D-9D7E-849617621168}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06FDE870-AD56-489E-9EDE-4712BBB76180}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06FDE870-AD56-489E-9EDE-4712BBB76180}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06FDE870-AD56-489E-9EDE-4712BBB76180}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06FDE870-AD56-489E-9EDE-4712BBB76180}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49EF9ED4-90B3-4037-9B71-02ED3F3645E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49EF9ED4-90B3-4037-9B71-02ED3F3645E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49EF9ED4-90B3-4037-9B71-02ED3F3645E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49EF9ED4-90B3-4037-9B71-02ED3F3645E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DA0090D-F09D-4A46-99D0-A6BF59EDD560}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DA0090D-F09D-4A46-99D0-A6BF59EDD560}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DA0090D-F09D-4A46-99D0-A6BF59EDD560}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DA0090D-F09D-4A46-99D0-A6BF59EDD560}.Release|Any CPU.Build.0 = Release|Any CPU
+		{354838AE-3101-4A7B-8AB6-25FA92D8994A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{354838AE-3101-4A7B-8AB6-25FA92D8994A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{354838AE-3101-4A7B-8AB6-25FA92D8994A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{354838AE-3101-4A7B-8AB6-25FA92D8994A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B42231F8-3902-4845-8CD1-248D842D72AB}
+	EndGlobalSection
+EndGlobal

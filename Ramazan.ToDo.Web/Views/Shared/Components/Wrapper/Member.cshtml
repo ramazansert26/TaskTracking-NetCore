@@ -1,0 +1,27 @@
+﻿@model AppUserListDto
+@{
+    string active = TempData["Active"]?.ToString();
+
+}
+<!-- Sidebar -->
+<div class="border-right" id="sidebar-wrapper">
+    <div class="sidebar-heading">
+        <img src="~/img/@Model.Picture" alt="@Model.Name" style="height:10rem!important; width:13rem!important;" class="w-100 img-thumbnail" />
+    </div>
+    <div class="list-group list-group-flush">
+        <a asp-controller="Home" asp-action="Index" class="list-group-item list-group-item-action @(active == TempDataInfo.Home ? "active" : "")"><i class="fas fa-home mr-2"></i>Ana Sayfa</a>
+        <a asp-controller="WorkOrder" asp-action="Index" class="list-group-item list-group-item-action @(active == TempDataInfo.WorkOrder ? "active" : "")"><i class="fas fa-fire mr-2"></i> Gelen Görevler</a>
+        <a asp-controller="Work" asp-action="Index" class="list-group-item list-group-item-action  @(active ==  TempDataInfo.Work ? "active" : "")"><i class="fas fa-clipboard-list mr-2"></i> Tamamlanan Görevler</a>
+        <a asp-controller="Notification" asp-action="Index" class="list-group-item list-group-item-action @(active == TempDataInfo.Notification ? "active" : "")">
+            <i class="far fa-bell mr-2"></i>
+            @if (ViewBag.NotificationCount > 0)
+            {
+                <sub class="badge badge-info badge-pill position-absolute" style="bottom:0.625rem!important;left:1.7rem!important;"><small>@ViewBag.NotificationCount</small></sub>
+            }
+            Bildirimler
+        </a>
+        <a asp-controller="Profile" asp-action="Index" class="list-group-item list-group-item-action  @(active == TempDataInfo.Profile ? "active" : "")"><i class="far fa-user mr-2"></i> Profil</a>
+        <a asp-area="" asp-controller="Home" asp-action="Logout" class="list-group-item list-group-item-action"><i class="fas fa-sign-out-alt mr-2"></i> Çıkış Yap</a>
+    </div>
+</div>
+<!-- /#sidebar-wrapper -->

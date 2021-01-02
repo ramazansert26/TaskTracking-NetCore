@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card text-white bg-info my-3 text-center">
+                <div class="card-body">
+                    <h4 class="card-title">Atanmamış Görev Sayısı</h4>
+                    <p class="card-text display-4">@ViewBag.UnassignedWorkCount</p>
+                    <p>
+                    <p>
+                        @if (ViewBag.UnassignedWorkCount > 0)
+                        {
+                            <a asp-controller="WorkOrder" asp-action="Index" class="btn btn-light"><i class="fas fa-eye mr-2"></i>İncele</a>
+                        }
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card text-white bg-info my-3 text-center">
+                <div class="card-body">
+                    <h4 class="card-title">Okunmamış Bildirim Sayısı</h4>
+                    <p class="card-text display-4">@ViewBag.UnReadNotificationCount</p>
+                    <p>
+                    <p>
+                        @if (ViewBag.UnReadNotificationCount > 0)
+                        {
+                            <a asp-controller="Notification" asp-action="Index" class="btn btn-light"><i class="fas fa-eye mr-2"></i>İncele</a>
+                        }
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card text-white bg-info my-3 text-center">
+                <div class="card-body">
+                    <h4 class="card-title">Tamamlanmış Görev Sayısı</h4>
+                    <p class="card-text display-4">@ViewBag.FinishedWorkCount</p>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card text-white bg-info my-3 text-center">
+                <div class="card-body">
+                    <h4 class="card-title">Toplam Aksiyon Sayısı</h4>
+                    <p class="card-text display-4">@ViewBag.ActionCount</p>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>

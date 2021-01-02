@@ -1,0 +1,68 @@
+﻿@model List<WorkListAllDto>
+@{
+    ViewData["Title"] = "FinishedWorks";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    int i = 0;
+}
+@if (Model.Count > 0)
+{
+    @foreach (var work in Model)
+    {
+        i++;
+        <div class="card my-2">
+            <h5 class="card-header">@work.Name</h5>
+            <div class="card-body">
+                <h5 class="card-title"><span class="text-danger">Öncelik Durumu: </span> @work.Priority.Description</h5>
+                <p class="card-title"><span class="text-danger">Personel: </span>@work.AppUser.Name @work.AppUser.SurName</p>
+                <p class="card-text">@work.Description</p>
+
+                <p class="text-right">
+                    @if (work.Actions.Count > 0)
+                    {
+                        <a class="btn btn-dark btn-sm" data-toggle="collapse" href="#collapseExample-@i" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            Aksiyonlar<i class="far fa-arrow-alt-circle-down ml-2"></i>
+                            <span class="badge badge-info">@work.Actions.Count</span>
+                        </a>
+                    }
+
+                </p>
+                <div class="collapse" id="collapseExample-@i">
+                    <table class="table table-hover table-bordered table-sm">
+                        <tr>
+                            <th>Tanım</th>
+                            <th>Detay</th>
+                            <th>Harcanan Süre (Saat)</th>
+                            <th>Oluşturulma Zamanı</th>
+                        </tr>
+                        @foreach (var action in work.Actions)
+                        {
+                    <tr>
+                        <td>@action.Description</td>
+                        <td>@action.Detail</td>
+                        <td>@action.TimeSpent</td>
+                        <td>@action.CreateDate.ToString("D")</td>
+                    </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    }
+    <nav aria-label="Page navigation example" class="float-right">
+        <ul class="pagination">
+            @for (int j = 1; j <= ViewBag.TotalPage; j++)
+            {
+                <li class="page-item @(ViewBag.ActivePage==j ? "active":"")"><a class="page-link" asp-action="FinishedWorks" asp-route-activePage="@j">@j</a></li>
+            }
+        </ul>
+    </nav>
+}
+else
+{
+    <div class="card my-2">
+        <h5 class="card-header font-italic">Tamamlanmış Görev bulunmamaktadır.</h5>
+    </div>
+
+}
